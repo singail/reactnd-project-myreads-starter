@@ -1,17 +1,28 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import * as BooksAPI from './BooksAPI';
+import { Link } from 'react-router-dom';
+import escapeRegExp from 'escape-string-regexp';
+import Book from './Book'
 
 class BooksSearch extends Component {
 	  state = {
-
-		query: ''
-    
+		query: '',
+    	searchedBooks: []
   	}
 
 	updateQuery = (query) => {
-		this.setState({query: query})
+		this.setState({query: query});
+		if (query) {
+			this.findBooks(query);
+		} else {
+			this.setState({searchedBooks: []})
+		}
+		
 	}
-
+	
+	findBooks = (query) => {BooksAPI.search(query).then((books) => 
+		this.setState({searchedBooks: books}))
+						   }
 	render() {
 
 		return (
@@ -32,20 +43,21 @@ class BooksSearch extends Component {
 						value={this.state.query}
 						onChange={(event) => this.updateQuery(event.target.value)}
 					/>
-
 				  </div>
         	</div>
             <div className="search-books-results">
-              <ol className="books-grid"></ol>
+              <ol className="books-grid">
+				  
+				 {this.state.searchedBooks.map((books) => 
+				  	
+				  	<Book key={books.id} author={books.authors} title={books.title} thumbnail={books.imageLinks.thumbnail}/>
+				  	
+				 )}
+			</ol>
             </div>
        	</div>
-
-
-
 		)
 	}
-
-
 }
 
 export default BooksSearch
