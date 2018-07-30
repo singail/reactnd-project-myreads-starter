@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom'
 
 //first component that displays all books on the main page
 class BooksList extends Component {
-
+			 
 	render() {
-		console.log(this.props.books);
+
 		return ( 
 			<div className = "list-books">
 				<div className = "list-books-title">

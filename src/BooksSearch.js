@@ -20,11 +20,18 @@ class BooksSearch extends Component {
 		
 	}
 	
-	findBooks = (query) => {BooksAPI.search(query).then((books) => 
-		this.setState({searchedBooks: books}))
-						   }
+	findBooks = (query) => {
+		BooksAPI.search(query).then((books) => {
+		if (books.error) {
+		this.setState({searchedBooks: []});
+	} else {
+		this.setState({searchedBooks: books});
+	}
+		
+						   })}
+														
 	render() {
-
+		
 		return (
 		<div className="search-books">
             <div className="search-books-bar">
@@ -49,9 +56,10 @@ class BooksSearch extends Component {
               <ol className="books-grid">
 				  
 				 {this.state.searchedBooks.map((books) => 
-				  	
-				  	<Book key={books.id} author={books.authors} title={books.title} thumbnail={books.imageLinks.thumbnail}/>
-				  	
+				 books.imageLinks ? 
+				  <Book key={books.id} author={books.authors} title={books.title} thumbnail={books.imageLinks.thumbnail}/> :
+				  <Book key={books.id} author={books.authors} title={books.title} thumbnail={''}/>
+
 				 )}
 			</ol>
             </div>
