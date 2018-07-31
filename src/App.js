@@ -5,39 +5,43 @@ import './App.css';
 import BooksList from './BooksList';
 import BooksSearch from './BooksSearch'
 
+/*The app that contains two children*/
 class BooksApp extends React.Component {
 
-state = {
-	books: []
-}
+	state = {
+		books: []
+	}
 
-componentDidMount() {
-	this.updateBooks();
-}
+/*This function is invoked as soon as the component is mounted*/
+	componentDidMount() {
+		this.updateBooks();
+	}
 
-updateBooks = () => {
-	BooksAPI.getAll().then((books) => 
-		this.setState({books})
-	)}
+	updateBooks = () => {
+		BooksAPI.getAll().then((books) => 
+			this.setState({books})
+		)
+	}
 
-shelfType = (book, shelf) => {
-	BooksAPI.update(book, shelf).then(this.updateBooks());
-}
+/*Get the books for the correct shelf*/
+	shelfType = (book, shelf) => {
+		BooksAPI.update(book, shelf)
+			.then(this.updateBooks());
+	}
 
-render() {
-	
-	return (
-      <div className="app">
-		<Route exact path='/search' render={() => (
-			<BooksSearch books={this.state.books} shelfType={this.shelfType}/>
-		)}/>
-   		<Route exact path='/' render={() => (
+	render() {
 		
-			<BooksList books={this.state.books} shelfType={this.shelfType}/>		  						  
-		)}/>	  
-      </div>
-    )
-  }
+		return (
+			<div className="app">
+				<Route exact path='/search' render={() => (
+					<BooksSearch books={this.state.books} shelfType={this.shelfType}/>
+				)}/>
+				<Route exact path='/' render={() => (
+					<BooksList books={this.state.books} shelfType={this.shelfType}/>		  						  
+				)}/>	  
+			</div>
+		)
+	}
 }
 
 export default BooksApp
