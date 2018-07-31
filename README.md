@@ -2,7 +2,7 @@
 
 This project is a part of the Front-End Web Developer Nanodegree Program of Udacity. For the **MyReads** project, I received a starter code that contained CSS and HTML markup. My goal was to add interactivity to the app using React.js.
 
-## How to run the page?
+## How To Run The Page?
 
 * Clone this git repository by pasting this to the git command line: git clone https://github.com/singail/reactnd-project-myreads-starter.git
 
