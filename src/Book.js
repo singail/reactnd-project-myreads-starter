@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 
 class Book extends Component {
-	
+
 	render() {
-		
+
 		return (
 			<li>
 				<div className = "book" >
@@ -18,7 +18,7 @@ class Book extends Component {
 					}>
 					</div>
 					<div className = "book-shelf-changer" >
-						<select>
+						<select onChange={(event) => this.props.shelfType(this.props.book, event.target.value)} defaultValue={this.props.shelf}>
 							<option value = "move"
 							disabled > Move to... < /option>
 							<option value = "currentlyReading"> Currently Reading </option> 
