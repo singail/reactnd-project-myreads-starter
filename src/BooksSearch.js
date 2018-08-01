@@ -34,7 +34,7 @@ class BooksSearch extends Component {
 			}
 		})
 	}
-														
+
 	render() {
 		
 		return (
@@ -67,7 +67,7 @@ class BooksSearch extends Component {
 								title={books.title} 
 								thumbnail={''} 
 								shelfType={this.props.shelfType} 
-								books={books} 
+								book={books} 
 								shelf={'none'}
 							/>
 						 )}
