@@ -4,7 +4,8 @@ import React, { Component } from 'react'
 class Book extends Component {
 
 	render() {
-
+		let image = this.props.book.imageLinks ? this.props.book.imageLinks.thumbnail : '';
+		
 		return (
 			<li>
 				<div className = "book">
@@ -14,12 +15,13 @@ class Book extends Component {
 								{
 									width: 128,
 									height: 193,
-									backgroundImage: `url("${this.props.thumbnail}")`
+									backgroundImage: `url("${image}")`
 								}
 							}
 						>
 						</div>
 						<div className = "book-shelf-changer">
+							
 							<select onChange={(event) => this.props.shelfType(this.props.book, event.target.value)} defaultValue={this.props.shelf}>
 								<option value = "move" disabled> Move to... < /option>
 								<option value = "currentlyReading"> Currently Reading </option> 
@@ -29,8 +31,8 @@ class Book extends Component {
 							</select>
 						</div> 
 					</div> 
-					<div className = "book-title"> {this.props.title} </div>
-					<div className = "book-authors"> {this.props.author} </div>
+					<div className = "book-title"> {this.props.book.title} </div>
+					<div className = "book-authors"> {this.props.book.authors} </div>
 				</div> 
 			</li>
 		)

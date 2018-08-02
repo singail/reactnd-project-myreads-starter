@@ -20,21 +20,10 @@ class BooksList extends Component {
 								<ol className = "books-grid">
 									{this.props.books.filter((book) => book.shelf === 'currentlyReading')
 										.map((book) =>
-											  book.imageLinks ? 
 											 <Book key={book.id}
-											 author={book.authors}
-											 title={book.title}
-											 thumbnail={book.imageLinks.thumbnail}
 											 shelfType={this.props.shelfType}
 											 book={book}
-											 shelf={book.shelf}/> :
-											<Book key={book.id}
-											 author={book.authors}
-											 title={book.title}
-											 thumbnail={''}
-											 shelfType={this.props.shelfType}
-											 book={book}
-											 shelf={book.shelf}/>
+											 shelf={book.shelf}/> 
 											)
 									}
 								</ol>
@@ -46,21 +35,11 @@ class BooksList extends Component {
 								<ol className = "books-grid">
 										 {this.props.books.filter((book) => book.shelf === 'wantToRead')
 											.map((book) => 
-												book.imageLinks ? 
 											 <Book key={book.id}
-											 author={book.authors}
-											 title={book.title}
-											 thumbnail={book.imageLinks.thumbnail}
 											 shelfType={this.props.shelfType}
 											 book={book}
-											 shelf={book.shelf}/> :
-											<Book key={book.id}
-											 author={book.authors}
-											 title={book.title}
-											 thumbnail={''}
-											 shelfType={this.props.shelfType}
-											 book={book}
-											 shelf={book.shelf}/>)}
+											 shelf={book.shelf}/> 
+											 )}
 								</ol>
 							</div> 
 						</div>
@@ -70,21 +49,11 @@ class BooksList extends Component {
 								<ol className = "books-grid"> 
 										{this.props.books.filter((book) => book.shelf === 'read')
 											.map((book) =>
-  											book.imageLinks ? 
 											 <Book key={book.id}
-											 author={book.authors}
-											 title={book.title}
-											 thumbnail={book.imageLinks.thumbnail}
 											 shelfType={this.props.shelfType}
 											 book={book}
-											 shelf={book.shelf}/> :
-											<Book key={book.id}
-											 author={book.authors}
-											 title={book.title}
-											 thumbnail={''}
-											 shelfType={this.props.shelfType}
-											 book={book}
-											 shelf={book.shelf}/>)}
+											 shelf={book.shelf}/> 
+											 )}
 								</ol> 
 							</div>
 						</div>

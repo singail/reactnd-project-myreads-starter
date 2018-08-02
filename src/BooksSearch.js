@@ -52,25 +52,15 @@ class BooksSearch extends Component {
 				</div>
 				<div className="search-books-results">
 					 <ol className="books-grid">
-						 {this.state.searchedBooks.map((books) => 
-						 books.imageLinks ? 
-						  <Book key={books.id} 
-					 			author={books.authors} 
-								title={books.title} 
-								thumbnail={books.imageLinks.thumbnail} 
+						 {this.state.searchedBooks.map((books) => {
+						  	let shelf = 'none';
+						 	this.props.books.filter(b => b.id === books.id)
+						  					.map(b => {shelf = b.shelf;})
+						  
+						  	return <Book key={books.id} 
 								shelfType={this.props.shelfType} 
-								book={books} 
-								shelf={'none'}
-							/> :
-						  <Book key={books.id} 
-						  		author={books.authors} 
-								title={books.title} 
-								thumbnail={''} 
-								shelfType={this.props.shelfType} 
-								book={books} 
-								shelf={'none'}
-							/>
-						 )}
+								book={books} shelf ={shelf}/> 
+						})}
 					</ol>
 				</div>
 			</div>
